@@ -1,12 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=, initial-scale=1.0">
+    <meta name="viewport" content="device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <script src="https://code.jquery.com/jquery.js"></script>
 </head>
+
 <body>
     This is my Survey Page
+    <select >
+        <option value="1" >1</option>
+        <option value="2" >2</option>
+        <option value="3" >3</option>
+        <option value="4" >4</option>
+        <option value="5" >5</option>
+    </select><br>
+    <select >
+        <option value="1" >1</option>
+        <option value="2" >2</option>
+        <option value="3" >3</option>
+        <option value="4" >4</option>
+        <option value="5" >5</option>
+    </select><br>
+    <select >
+        <option value="1" >1</option>
+        <option value="2" >2</option>
+        <option value="3" >3</option>
+        <option value="4" >4</option>
+        <option value="5" >5</option>
+    </select><br>
+    <select >
+        <option value="1" >1</option>
+        <option value="2" >2</option>
+        <option value="3" >3</option>
+        <option value="4" >4</option>
+        <option value="5" >5</option>
+    </select><br>
+    <select >
+        <option value="1" >1</option>
+        <option value="2" >2</option>
+        <option value="3" >3</option>
+        <option value="4" >4</option>
+        <option value="5" >5</option>
+    </select><br>
+    <button type ="submit" class="test">click me</button>
 </body>
+<script>
+    $(".test").on("click", function(event){
+        event.preventDefault();
+        let results = {score : 0};
+        $("select").each(function(){
+            console.log($(this).val())
+            results.score += parseInt($(this).val())
+        })
+        console.log("results: ",results)
+        $.post("/api/results", results)
+            .then(function (data) {
+                console.log("Data: ",data);
+            });
+    });
+
+</script>
+
 </html>

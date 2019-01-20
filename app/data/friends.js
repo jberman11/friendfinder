@@ -1,82 +1,86 @@
 friends = [
     {
 
-        name:"",
+        name:"a",
         photo:"",
-        Rating:"",
+        Rating:"5",
         type:""
 
     },
     {
 
-        name:"",
+        name:"b",
         photo:"",
-        Rating:"",
+        Rating:"10",
         type:""
 
     },
     {
 
-        name:"",
+        name:"c",
         photo:"",
-        Rating:"",
+        Rating:"15",
         type:""
 
     },
     {
 
-        name:"",
+        name:"d",
         photo:"",
-        Rating:"",
+        Rating:"20",
         type:""
 
     },
     {
 
-        name:"",
+        name:"e",
         photo:"",
-        Rating:"",
+        Rating:"25",
         type:""
 
     },
     {
 
-        name:"",
+        name:"f",
         photo:"",
-        Rating:"",
+        Rating:"30",
         type:""
 
     },
     {
 
-        name:"",
+        name:"g",
         photo:"",
-        Rating:"",
+        Rating:"35",
         type:""
 
     },
     {
 
-        name:"",
+        name:"h",
         photo:"",
-        Rating:"",
+        Rating:"40",
         type:""
 
     },
     {
 
-        name:"",
+        name:"i",
         photo:"",
-        Rating:"",
+        Rating:"45",
         type:""
 
     },
     {
 
-        name:"",
+        name:"j",
         photo:"",
-        Rating:"",
+        Rating:"50",
         type:""
 
     }
 ]
+
+module.exports = function(){
+    friends
+}
