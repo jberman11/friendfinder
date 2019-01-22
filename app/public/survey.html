@@ -7,61 +7,147 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <script src="https://code.jquery.com/jquery.js"></script>
+    <style>
+        .modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  }
+  
+  /* Modal Content */
+  .modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+  }
+  
+  /* The Close Button */
+  .close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+  }
+    </style>
 </head>
 
 <body>
     This is my Survey Page
-    <select >
-        <option value="1" >1</option>
-        <option value="2" >2</option>
-        <option value="3" >3</option>
-        <option value="4" >4</option>
-        <option value="5" >5</option>
+    <select>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
     </select><br>
-    <select >
-        <option value="1" >1</option>
-        <option value="2" >2</option>
-        <option value="3" >3</option>
-        <option value="4" >4</option>
-        <option value="5" >5</option>
+    <select>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
     </select><br>
-    <select >
-        <option value="1" >1</option>
-        <option value="2" >2</option>
-        <option value="3" >3</option>
-        <option value="4" >4</option>
-        <option value="5" >5</option>
+    <select>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
     </select><br>
-    <select >
-        <option value="1" >1</option>
-        <option value="2" >2</option>
-        <option value="3" >3</option>
-        <option value="4" >4</option>
-        <option value="5" >5</option>
+    <select>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
     </select><br>
-    <select >
-        <option value="1" >1</option>
-        <option value="2" >2</option>
-        <option value="3" >3</option>
-        <option value="4" >4</option>
-        <option value="5" >5</option>
+    <select>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
     </select><br>
-    <button type ="submit" class="test">click me</button>
+    <button type="submit" class="test">click me</button>
+
+    <button id="myBtn">Open Modal</button>
+
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p>Here's your friend!</p>
+            <p id="friendName"></p>
+            <img id="friendPhoto">
+
+        </div>
+
+
 </body>
 <script>
-    $(".test").on("click", function(event){
+    $(".test").on("click", function (event) {
         event.preventDefault();
-        let results = {score : 0};
-        $("select").each(function(){
+        let results = { score: 0 };
+        $("select").each(function () {
             console.log($(this).val())
             results.score += parseInt($(this).val())
         })
-        console.log("results: ",results)
+        console.log("results: ", results)
         $.post("/api/results", results)
             .then(function (data) {
-                console.log("Data: ",data);
+                console.log("Data: ", data);
+                reveal(data)
             });
     });
+    // Get the modal
+    var modal = document.getElementById('myModal');
+
+    // Get the button that opens the modal
+    var btn = document.getElementById("myBtn");
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    // When the user clicks the button, open the modal 
+    // btn.onclick = function () {
+    //     modal.style.display = "block";
+    // }
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function () {
+        modal.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+    function reveal(finalfriend){
+        $("#friendName").text(finalfriend.name)
+        $("#friendPhoto").attr("src",finalfriend.photo)
+        $("#myModal").toggle()
+    }
 
 </script>
 

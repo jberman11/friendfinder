@@ -6,6 +6,7 @@ var fs = require("fs");
 var app = express();
 var PORT = 3000
 
+app.use(express.static(__dirname + '/public'));
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 

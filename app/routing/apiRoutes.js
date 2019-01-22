@@ -28,6 +28,7 @@ app.post("/api/results", function(req,res){
     }
     console.log("final friend: ",finalFriend)
     res.json(finalFriend)
+    
 
 })
 
